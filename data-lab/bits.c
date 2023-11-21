@@ -154,8 +154,8 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
-
-  return 2 ;
+  //32bit integer, left shifted by 31
+  return 1 << 31 ;
 
 }
 //2
