@@ -143,7 +143,9 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
+  // NAND => ~(A&B)
+  // XOR = [A NAND (A NAND B)] NAND [B NAND (A NAND B)]
+  return ~((~(x&(~(x&y)))&(~(y&(~(x&y))))));
 }
 /* 
  * tmin - return minimum two's complement integer 
@@ -153,7 +155,7 @@ int bitXor(int x, int y) {
  */
 int tmin(void) {
 
-  return 2;
+  return 2 ;
 
 }
 //2
