@@ -155,6 +155,7 @@ int bitXor(int x, int y) {
  */
 int tmin(void) {
   //32bit integer, left shifted by 31
+  // Tmin is 0x80000000
   return 1 << 31 ;
 
 }
@@ -167,7 +168,9 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+  // Tmin is 0x80000000, Tmax is 0x7FFFFFFF 
+  // right part is for handling case x=-1
+  return !(~(x+1)^x |!(x+1));
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
