@@ -181,7 +181,10 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return 2;
+  // use mask hex A (1010) to mask the even-numbered bit
+  // noted that bits start from 0;
+  // x^x = 0 
+  return !(((x&0xAAAAAAAA)^0xAAAAAAAA) );
 }
 /* 
  * negate - return -x 
