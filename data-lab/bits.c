@@ -170,7 +170,7 @@ int tmin(void) {
 int isTmax(int x) {
   // Tmin is 0x80000000, Tmax is 0x7FFFFFFF 
   // right part is for handling case x=-1
-  return !(~(x+1)^x |!(x+1));
+  return !((~(x+1)^x)|(!(x+1)));
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
@@ -184,7 +184,9 @@ int allOddBits(int x) {
   // use mask hex A (1010) to mask the even-numbered bit
   // noted that bits start from 0;
   // x^x = 0 
-  return !(((x&0xAAAAAAAA)^0xAAAAAAAA) );
+  int y = 0xAA + (0xAA << 8);
+  y = y + (y << 16);
+  return !(((x&y)^y) );
 }
 /* 
  * negate - return -x 
@@ -194,7 +196,7 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  return ~x+1;
 }
 //3
 /* 
